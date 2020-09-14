@@ -37,7 +37,7 @@ public class ConsultasProducto extends Conexion {
         PreparedStatement ps = null;
         Connection con = getConexion();
 
-        String sql = "UPDATE INTO producto SET codigo=?, nombre=?, precio=?, cantidad=? WHERE id=?";
+        String sql = "UPDATE producto SET codigo=?, nombre=?, precio=?, cantidad=? WHERE id=?";
 
         try {
             ps = con.prepareStatement(sql);
