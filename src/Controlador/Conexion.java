@@ -13,7 +13,7 @@ public class Conexion {
 
     public Connection getConexion() {
         //Conexion a la BBDD
-        String usr = "martin"; //usuario
+        String usr = "root"; //usuario
         String pass = "1234"; //constraseña
         String url = "jdbc:mysql://localhost:3306/";
         
