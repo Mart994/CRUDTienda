@@ -1,5 +1,5 @@
 
-package modelo;
+package Controlador;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -12,10 +12,15 @@ public class Conexion {
     Connection con = null;
 
     public Connection getConexion() {
+        //Conexion a la BBDD
+        String usr = "martin"; //usuario
+        String pass = "1234"; //constraseña
+        String url = "jdbc:mysql://localhost:3306/";
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con= getConnection("jdbc:mysql://192.168.0.105/Tienda","martin","1234");
-            showMessageDialog(null, "Conexion exitosa");
+            con= getConnection(url+"Tienda", usr, pass);
+            //showMessageDialog(null, "Conexion exitosa");
         } catch (Exception e){
             showMessageDialog(null, "Error de conexion"+ e.getMessage());
         }

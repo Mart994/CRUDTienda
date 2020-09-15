@@ -1,5 +1,6 @@
 package modelo;
 
+import Controlador.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,9 +9,11 @@ import java.sql.SQLException;
 public class ConsultasProducto extends Conexion {
 
     public boolean registrar(Producto pro) throws SQLException {
+        //prepara datos para manejarlos en la BBDD
         PreparedStatement ps = null;
         Connection con = getConexion();
-
+        
+        //INSERT del nuevo Producto en la tabla
         String sql = "INSERT INTO producto (codigo, nombre, precio, cantidad) VALUES (?,?,?,?)";
 
         try {
@@ -36,7 +39,7 @@ public class ConsultasProducto extends Conexion {
     public boolean modificar(Producto pro) throws SQLException {
         PreparedStatement ps = null;
         Connection con = getConexion();
-
+        //UPDATE, modificacion del Producto en la tabla, modifica según el ID
         String sql = "UPDATE producto SET codigo=?, nombre=?, precio=?, cantidad=? WHERE id=?";
 
         try {
@@ -63,7 +66,7 @@ public class ConsultasProducto extends Conexion {
     public boolean eliminar(Producto pro) throws SQLException {
         PreparedStatement ps = null;
         Connection con = getConexion();
-
+        //elimina producto segun ID
         String sql = "DELETE FROM producto WHERE id=?";
 
         try {
@@ -88,7 +91,7 @@ public class ConsultasProducto extends Conexion {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Connection con = getConexion();
-
+        //busqueda de productos segun el Codigo
         String sql = "SELECT * FROM producto WHERE codigo=?";
 
         try {

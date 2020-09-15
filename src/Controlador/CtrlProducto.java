@@ -21,6 +21,7 @@ public class CtrlProducto implements ActionListener {
         this.mod = mod;
         this.modC = modC;
         this.frm = frm;
+        //escuchar acciones de los botones
         this.frm.btnGuardar.addActionListener(this);
         this.frm.btnModificar.addActionListener(this);
         this.frm.btnEliminar.addActionListener(this);
@@ -29,6 +30,7 @@ public class CtrlProducto implements ActionListener {
     }
 
     public void iniciar() {
+        //Levanta la interfaz gráfica
         frm.setTitle("Productos");
         frm.setLocationRelativeTo(null);
         frm.tId.setVisible(false);
@@ -36,7 +38,7 @@ public class CtrlProducto implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        //Acciones para Boton Guardar
         if (e.getSource() == frm.btnGuardar) {
             mod.setCodigo(frm.tCodigo.getText());
             mod.setNombre(frm.tNombre.getText());
@@ -56,7 +58,7 @@ public class CtrlProducto implements ActionListener {
                 Logger.getLogger(CtrlProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        //Acciones para Boton Modificar
         if (e.getSource() == frm.btnModificar) {
             mod.setId(Integer.parseInt(frm.tId.getText()));
             mod.setCodigo(frm.tCodigo.getText());
@@ -77,7 +79,7 @@ public class CtrlProducto implements ActionListener {
                 Logger.getLogger(CtrlProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        //Acciones para Boton Eliminar
         if (e.getSource() == frm.btnEliminar) {
             mod.setId(Integer.parseInt(frm.tId.getText()));
             
@@ -94,7 +96,7 @@ public class CtrlProducto implements ActionListener {
                 Logger.getLogger(CtrlProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        //Acciones para Boton Buscar
         if (e.getSource() == frm.btnBuscar) {
             mod.setCodigo(frm.tCodigo.getText());
             
@@ -115,15 +117,14 @@ public class CtrlProducto implements ActionListener {
                 Logger.getLogger(CtrlProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        //Acciones para Boton Limpiar
         if (e.getSource() == frm.btnLimpiar) {
             limpiar();
         }
 
     }
-    
-    public void limpiar()
-    {
+    //Funcion para limpiar los cuadros de texto
+    public void limpiar(){
         frm.tId.setText(null);
         frm.tCodigo.setText(null);
         frm.tNombre.setText(null);
