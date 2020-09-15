@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
 
 public class CtrlProducto implements ActionListener {
 
-    private Producto mod;
-    private ConsultasProducto modC;
+    private Producto prod;
+    private ConsultasProducto prodC;
     private formProducto frm;
 
-    public CtrlProducto(Producto mod, ConsultasProducto modC, formProducto frm) {
-        this.mod = mod;
-        this.modC = modC;
+    public CtrlProducto(Producto prod, ConsultasProducto prodC, formProducto frm) {
+        this.prod = prod;
+        this.prodC = prodC;
         this.frm = frm;
         //escuchar acciones de los botones
         this.frm.btnGuardar.addActionListener(this);
@@ -40,13 +40,13 @@ public class CtrlProducto implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //Acciones para Boton Guardar
         if (e.getSource() == frm.btnGuardar) {
-            mod.setCodigo(frm.tCodigo.getText());
-            mod.setNombre(frm.tNombre.getText());
-            mod.setPrecio(Double.parseDouble(frm.tPrecio.getText()));
-            mod.setCantidad(Integer.parseInt(frm.tCantidad.getText()));
+            prod.setCodigo(frm.tCodigo.getText());
+            prod.setNombre(frm.tNombre.getText());
+            prod.setPrecio(Double.parseDouble(frm.tPrecio.getText()));
+            prod.setCantidad(Integer.parseInt(frm.tCantidad.getText()));
             
             try {
-                if(modC.registrar(mod))
+                if(prodC.registrar(prod))
                 {
                     JOptionPane.showMessageDialog(null, "Registro Guardado");
                     limpiar();
@@ -60,14 +60,14 @@ public class CtrlProducto implements ActionListener {
         }
         //Acciones para Boton Modificar
         if (e.getSource() == frm.btnModificar) {
-            mod.setId(Integer.parseInt(frm.tId.getText()));
-            mod.setCodigo(frm.tCodigo.getText());
-            mod.setNombre(frm.tNombre.getText());
-            mod.setPrecio(Double.parseDouble(frm.tPrecio.getText()));
-            mod.setCantidad(Integer.parseInt(frm.tCantidad.getText()));
+            prod.setId(Integer.parseInt(frm.tId.getText()));
+            prod.setCodigo(frm.tCodigo.getText());
+            prod.setNombre(frm.tNombre.getText());
+            prod.setPrecio(Double.parseDouble(frm.tPrecio.getText()));
+            prod.setCantidad(Integer.parseInt(frm.tCantidad.getText()));
             
             try {
-                if(modC.modificar(mod))
+                if(prodC.modificar(prod))
                 {
                     JOptionPane.showMessageDialog(null, "Registro Modificado");
                     limpiar();
@@ -81,10 +81,10 @@ public class CtrlProducto implements ActionListener {
         }
         //Acciones para Boton Eliminar
         if (e.getSource() == frm.btnEliminar) {
-            mod.setId(Integer.parseInt(frm.tId.getText()));
+            prod.setId(Integer.parseInt(frm.tId.getText()));
             
             try {
-                if(modC.eliminar(mod))
+                if(prodC.eliminar(prod))
                 {
                     JOptionPane.showMessageDialog(null, "Registro Eliminado");
                     limpiar();
@@ -98,16 +98,16 @@ public class CtrlProducto implements ActionListener {
         }
         //Acciones para Boton Buscar
         if (e.getSource() == frm.btnBuscar) {
-            mod.setCodigo(frm.tCodigo.getText());
+            prod.setCodigo(frm.tCodigo.getText());
             
             try {
-                if(modC.buscar(mod))
+                if(prodC.buscar(prod))
                 {
-                    frm.tId.setText(String.valueOf(mod.getId()));
-                    frm.tCodigo.setText(mod.getCodigo());
-                    frm.tNombre.setText(mod.getNombre());
-                    frm.tPrecio.setText(String.valueOf(mod.getPrecio()));
-                    frm.tCantidad.setText(String.valueOf(mod.getCantidad()));
+                    frm.tId.setText(String.valueOf(prod.getId()));
+                    frm.tCodigo.setText(prod.getCodigo());
+                    frm.tNombre.setText(prod.getNombre());
+                    frm.tPrecio.setText(String.valueOf(prod.getPrecio()));
+                    frm.tCantidad.setText(String.valueOf(prod.getCantidad()));
                     
                 } else {
                     JOptionPane.showMessageDialog(null, "No se encontro registro");
