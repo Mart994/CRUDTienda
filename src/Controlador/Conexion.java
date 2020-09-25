@@ -15,7 +15,7 @@ public class Conexion {
         //Conexion a la BBDD
         String usr = "martin"; //usuario
         String pass = "1234"; //constraseña
-        String url = "jdbc:mysql://localhost:3306/";
+        String url = "jdbc:mysql://192.168.0.105:3306/";
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
